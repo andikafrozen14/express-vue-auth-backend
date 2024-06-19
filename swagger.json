@@ -1,0 +1,98 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "Member Authentication API",
+        "description": "API for member authentication with Express.js"
+    },
+    "basePath": "/api",
+    "schemes": ["http"],
+    "paths": {
+        "/member/register": {
+            "post": {
+                "summary": "Register a new member",
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "name": {
+                                    "type": "string"
+                                },
+                                "username": {
+                                    "type": "string"
+                                },
+                                "password": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Member registered successfully"
+                    },
+                    "500": {
+                        "description": "Error detected"
+                    }
+                }
+            }
+        },
+        "/member/login": {
+            "post": {
+                "summary": "Login a member",
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "username": {
+                                    "type": "string"
+                                },
+                                "password": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Member logged in successfully"
+                    },
+                    "500": {
+                        "description": "Error detected"
+                    }
+                }
+            }
+        },
+        "/member/profile": {
+            "get": {
+                "summary": "Get member profile",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Member profile"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                }
+            }
+        }
+    }
+}
